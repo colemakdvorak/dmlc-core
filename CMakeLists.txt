@@ -26,7 +26,7 @@ if(USE_HDFS)
  find_package(HDFS REQUIRED)
  find_package(JNI REQUIRED)
  include_directories(${HDFS_INCLUDE_DIR})
- list(APPEND dmlccore_LINKER_LIBS ${HDFS_LIBRARIES} ${JAVA_JVM_LIBRARY})
+ list(APPEND dmlccore_LINKER_LIBS ${HDFS_STATIC_LIB} ${JAVA_JVM_LIBRARY})
  add_definitions(-DDMLC_USE_HDFS=1)
 else()
  add_definitions(-DDMLC_USE_HDFS=0)
@@ -131,7 +131,7 @@ if(INSTALL_INCLUDE_DIR)
 endif()
 
 # ---[ Install the archive static lib and header files
-install(TARGETS dmlc ARCHIVE DESTINATION lib LIBRARY DESTINATION lib) 
+install(TARGETS dmlc ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 install(DIRECTORY include DESTINATION .)
 install(DIRECTORY doc DESTINATION .)
 
